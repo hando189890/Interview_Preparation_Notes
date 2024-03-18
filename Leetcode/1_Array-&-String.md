@@ -1,8 +1,8 @@
 ## Part 1: Arrary and String Problem
 
 - [**Leetcode 1768 (Easy): Merge Strings Alternately**](https://leetcode.com/problems/merge-strings-alternately/description/?envType=study-plan-v2&envId=leetcode-75)
-  >You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string.
-  > Return the merged string.
+  - You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string.
+  - Return the merged string.
 
   **Solution (Python): **
   ```python
@@ -31,8 +31,8 @@
 
 
 - [**1071(Easy):Greatest Common Divisor of Strings**](https://leetcode.com/problems/greatest-common-divisor-of-strings/description/?envType=study-plan-v2&envId=leetcode-75)
-  > For two strings s and t, we say "t divides s" if and only if s = t + t + t + ... + t + t (i.e., t is concatenated with itself one or more times).\n
-  > Given two strings str1 and str2, return the largest string x such that x divides both str1 and str2.
+  - For two strings s and t, we say "t divides s" if and only if s = t + t + t + ... + t + t (i.e., t is concatenated with itself one or more times).\n
+  - Given two strings str1 and str2, return the largest string x such that x divides both str1 and str2.
 
    **Solution 1 (Python): **
   ```python
@@ -64,9 +64,9 @@
 
     
 - [**1431(Easy). Kids With the Greatest Number of Candies**](https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/description/?envType=study-plan-v2&envId=leetcode-75)
-- There are n kids with candies. You are given an integer array candies, where each candies[i] represents the number of candies the ith kid has, and an integer extraCandies, denoting the number of extra candies that you have.
-- Return a boolean array result of length n, where result[i] is true if, after giving the ith kid all the extraCandies, they will have the greatest number of candies among all the kids, or false otherwise.
-- Note that multiple kids can have the greatest number of candies.
+  - There are n kids with candies. You are given an integer array candies, where each candies[i] represents the number of candies the ith kid has, and an integer extraCandies, denoting the number of extra candies that you have.
+  - Return a boolean array result of length n, where result[i] is true if, after giving the ith kid all the extraCandies, they will have the greatest number of candies among all the kids, or false otherwise.
+  - Note that multiple kids can have the greatest number of candies.
 
    **Solution (Python): **
   _Time Complexity: O(N) + Space Comexity: O(N)_
@@ -92,8 +92,8 @@
   ```
 
 - [**605(Easy). Can Place Flowers**](https://leetcode.com/problems/can-place-flowers/description/?envType=study-plan-v2&envId=leetcode-75)
-- You have a long flowerbed in which some of the plots are planted, and some are not. However, flowers cannot be planted in adjacent plots.
-- Given an integer array flowerbed containing 0's and 1's, where 0 means empty and 1 means not empty, and an integer n, return true if n new flowers can be planted in the flowerbed without violating the no-adjacent-flowers rule and false otherwise.
+  - You have a long flowerbed in which some of the plots are planted, and some are not. However, flowers cannot be planted in adjacent plots.
+  - Given an integer array flowerbed containing 0's and 1's, where 0 means empty and 1 means not empty, and an integer n, return true if n new flowers can be planted in the flowerbed without violating the no-adjacent-flowers rule and false otherwise.
 
    **Solution (Python): **
   _Time Complexity: O(N) + Space Comexity: O(1)_
@@ -116,8 +116,8 @@
   ```
 
 - [**345(Easy). Reverse Vowels of a String**](https://leetcode.com/problems/reverse-vowels-of-a-string/description/?envType=study-plan-v2&envId=leetcode-75)
-- Given a string s, reverse only all the vowels in the string and return it.
-- The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
+  - Given a string s, reverse only all the vowels in the string and return it.
+  - The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
 
    **Solution (Python): **
   _Time Complexity: O(N) + Space Comexity: O(N)_
@@ -147,12 +147,11 @@
         
         return ''.join(s)
   ```
-
-  - [**151(Medium. Reverse Words in a String**](https://leetcode.com/problems/reverse-words-in-a-string/description/?envType=study-plan-v2&envId=leetcode-75)
-- Given an input string s, reverse the order of the words.
-- A word is defined as a sequence of non-space characters. The words in s will be separated by at least one space.
-- Return a string of the words in reverse order concatenated by a single space.
-- Note that s may contain leading or trailing spaces or multiple spaces between two words. The returned string should only have a single space separating the words. Do not include any extra spaces.
+- [**151(Medium. Reverse Words in a String**](https://leetcode.com/problems/reverse-words-in-a-string/description/?envType=study-plan-v2&envId=leetcode-75)
+  - Given an input string s, reverse the order of the words.
+  - A word is defined as a sequence of non-space characters. The words in s will be separated by at least one space.
+  - Return a string of the words in reverse order concatenated by a single space.
+  - Note that s may contain leading or trailing spaces or multiple spaces between two words. The returned string should only have a single space separating the words. Do not include any extra spaces.
 
    **Solution (Python): **
   _Time Complexity: O(N) + Space Comexity: O(N)_
