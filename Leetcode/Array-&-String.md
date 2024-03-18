@@ -1,4 +1,4 @@
-## Arrary and String Problem (Start)
+## Part 1: Arrary and String Problem
 
 - [**Leetcode 1768 (Easy): Merge Strings Alternately**](https://leetcode.com/problems/merge-strings-alternately/description/?envType=study-plan-v2&envId=leetcode-75)
   >You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string.
@@ -113,4 +113,37 @@
         
         return n <= 0 
         # if n becomes less than or equal to zero after placing flowers, the function returns True. 
+  ```
+
+- [**345(Easy). Reverse Vowels of a String**](https://leetcode.com/problems/reverse-vowels-of-a-string/description/?envType=study-plan-v2&envId=leetcode-75)
+- Given a string s, reverse only all the vowels in the string and return it.
+- The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
+
+   **Solution (Python): **
+  _Time Complexity: O(N) + Space Comexity: O(n)_
+  ```python
+  class Solution(object):
+    def reverseVowels(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        vowels = {'a', 'e', 'i', 'o', 'u'}
+        s = list(s)
+        left, right = 0, len(s) - 1
+        
+        while left < right:
+            if s[left].lower() in vowels and s[right].lower() in vowels:
+                s[left], s[right] = s[right], s[left]
+                left += 1
+                right -= 1
+            elif s[left].lower() in vowels:
+                right -= 1
+            elif s[right].lower() in vowels:
+                left += 1
+            else:
+                left += 1
+                right -= 1
+        
+        return ''.join(s)
   ```
