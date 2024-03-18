@@ -63,35 +63,32 @@
           return self.gcdOfStrings(str1, str2[len(str1):])
 
     
-- [Leetcode 103: Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
-  > Given the root of a binary tree, return the zigzag level order traversal of its nodes' values. (i.e., from left to right, then right to left for the next level and alternate between).
-  
-  _Time Complexity: O(N) + Space Comexity: O(N)_
-  ```cpp
-  vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
-      vector<vector<int>> res;
-      if(!root) return res;
-      queue<TreeNode*> q;
-      q.push(root);
-      bool leftToRight = true;
-      
-      while(!q.empty()){
-          int n = q.size();
-          vector<int> level(n);
-          for(int i = 0; i < n; i++){
-              TreeNode *node = q.front(); q.pop();
-              // fill level array with zigzag order
-              int index = leftToRight ? i : (n - i - 1);
-              level[index] = node->val;
+- [**1431(Easy). Kids With the Greatest Number of Candies**](https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/description/?envType=study-plan-v2&envId=leetcode-75)
+- There are n kids with candies. You are given an integer array candies, where each candies[i] represents the number of candies the ith kid has, and an integer extraCandies, denoting the number of extra candies that you have.
+- Return a boolean array result of length n, where result[i] is true if, after giving the ith kid all the extraCandies, they will have the greatest number of candies among all the kids, or false otherwise.
+- Note that multiple kids can have the greatest number of candies.
 
-              if(node->left) q.push(node->left);
-              if(node->right) q.push(node->right);
-          }
-          leftToRight = !leftToRight;
-          res.push_back(level);
-      }
-      return res;
-  }
+   **Solution (Python): **
+  _Time Complexity: O(N) + Space Comexity: O(N)_
+  ```python
+  class Solution(object):
+    def kidsWithCandies(self, candies, extraCandies):
+        """
+        :type candies: List[int]
+        :type extraCandies: int
+        :rtype: List[bool]
+        """
+
+        maxCandies = max(candies)
+        result = []
+        
+        for c in candies:
+            if c + extraCandies >= maxCandies:
+                result.append(True)
+            else:
+                result.append(False)
+        return result
+  
   ```
 - [Leetcode 297: Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/) (combines BFS and two-pointer approach)
   
