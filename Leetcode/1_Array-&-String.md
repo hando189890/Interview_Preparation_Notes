@@ -214,20 +214,18 @@
    **Solution (Python): **
   _Time Complexity: O(N) + Space Comexity: O(N)_
   ```python
-  class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
-        n = len(nums)
-        ans = [1] * n
-        l = 1
-        r = n - 2
-        prefix = 1
-        suffix = 1
-        while l <= n and r >= 0:
-            prefix *= nums[l-1]
-            suffix *= nums[r+1]
-            ans[l] *= prefix
-            ans[r] *= suffix
-            l += 1
-            r -= 1
-        return ans
-  ```
+  class Solution(object):
+    def increasingTriplet(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        first = second = float('inf')
+        for num in nums:
+            if num <= first:
+                first = num
+            elif num <= second:
+                second = num
+            else:
+                return True
+        return False
