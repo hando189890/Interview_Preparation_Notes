@@ -25,30 +25,61 @@
             insert_pos += 1
 
         return nums
+```
 
--[**392(Easy). Is Subsequence**](https://leetcode.com/problems/move-zeroes/description/?envType=study-plan-v2&envId=leetcode-75)
-  - Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
-  - Note that you must do this in-place without making a copy of the array.
+-[**392(Easy). Is Subsequence**](https://leetcode.com/problems/is-subsequence/?envType=study-plan-v2&envId=leetcode-75)
+  - Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
+  - A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
+  - Considering the case s is empty.
 
   **Solution (Python): **
   ```python
   class Solution(object):
-    def moveZeroes(self, nums):
+    def isSubsequence(self, s, t):
         """
-        :type nums: List[int]
-        :rtype: None Do not return anything, modify nums in-place instead.
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+
+        i = 0
+        j = 0
+        while i < len(s) and j < len(t):
+            if s[i] == t[j]:
+                i+=1
+            j+=1
+        return True if i == len(s) else False
+
+-[**11(Medium). Container With Most Water**](https://leetcode.com/problems/is-subsequence/?envType=study-plan-v2&envId=leetcode-75)
+  - You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+  - Find two lines that together with the x-axis form a container, such that the container contains the most water.
+  - Return the maximum amount of water a container can store.
+  - Notice that you may not slant the container.
+
+  **Solution (Python): **
+  ```python
+class Solution(object):
+    def maxArea(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
         """
         
-        insert_pos = 0
+        n = len(height)
+        left, right = 0, n - 1
+        max_area = 0
+    
+        while left < right:
+            # Calculate current area
+            current_area = min(height[left], height[right]) * (right - left)
+            # Update max_area if current area is greater
+            max_area = max(max_area, current_area)
         
-        for num in nums:
-            if num != 0:
-                nums[insert_pos] = num
-                insert_pos += 1
-        
-        while insert_pos < len(nums):
-            nums[insert_pos] = 0
-            insert_pos += 1
-
-        return nums
-
+            # Move the pointer with the shorter line towards the center
+            if height[left] < height[right]:
+                left += 1
+            else:
+                right -= 1
+    
+        return max_area
+  
