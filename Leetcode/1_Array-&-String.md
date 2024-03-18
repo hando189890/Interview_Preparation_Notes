@@ -181,10 +181,35 @@
         
   ```
 
-- [**238(Medium. Product of Array Except Self**](https://leetcode.com/problems/product-of-array-except-self/description/?envType=study-plan-v2&envId=leetcode-75)
+- [**238(Medium). Product of Array Except Self**](https://leetcode.com/problems/product-of-array-except-self/description/?envType=study-plan-v2&envId=leetcode-75)
+  - **IMPORTANT !!!**
   - Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
   - The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
   - You must write an algorithm that runs in O(n) time and without using the division operation.
+
+   **Solution (Python): **
+  _Time Complexity: O(N) + Space Comexity: O(N)_
+  ```python
+  class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        ans = [1] * n
+        l = 1
+        r = n - 2
+        prefix = 1
+        suffix = 1
+        while l <= n and r >= 0:
+            prefix *= nums[l-1]
+            suffix *= nums[r+1]
+            ans[l] *= prefix
+            ans[r] *= suffix
+            l += 1
+            r -= 1
+        return ans
+  ```
+
+  - [**334(Medium). Increasing Triplet Subsequence**](https://leetcode.com/problems/increasing-triplet-subsequence/description/?envType=study-plan-v2&envId=leetcode-75)
+  - Given an integer array nums, return true if there exists a triple of indices (i, j, k) such that i < j < k and nums[i] < nums[j] < nums[k]. If no such indices exists, return false.
 
    **Solution (Python): **
   _Time Complexity: O(N) + Space Comexity: O(N)_
