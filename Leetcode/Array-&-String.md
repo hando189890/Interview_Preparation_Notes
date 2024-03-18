@@ -52,16 +52,17 @@
   ```
      **Solution 2 (Python): **
     ```python
-  class Solution(object):
-        
-    def gcdOfStrings(self, str1, str2):
-        if str1 + str2 != str2 + str1:
+    class Solution(object):
+        def gcdOfStrings(self, str1, str2):
+          if str1 + str2 != str2 + str1:
             return ""
-        if len(str1) == len(str2):
+          if len(str1) == len(str2):
             return str1
-        if len(str1) > len(str2):
+          if len(str1) > len(str2):
             return self.gcdOfStrings(str1[len(str2):], str2)
-        return self.gcdOfStrings(str1, str2[len(str1):])
+          return self.gcdOfStrings(str1, str2[len(str1):])
+
+    
 - [Leetcode 103: Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
   > Given the root of a binary tree, return the zigzag level order traversal of its nodes' values. (i.e., from left to right, then right to left for the next level and alternate between).
   
