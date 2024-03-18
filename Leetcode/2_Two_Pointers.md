@@ -49,6 +49,7 @@
                 i+=1
             j+=1
         return True if i == len(s) else False
+```
 
 -[**11(Medium). Container With Most Water**](https://leetcode.com/problems/is-subsequence/?envType=study-plan-v2&envId=leetcode-75)
   - You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
@@ -82,4 +83,37 @@ class Solution(object):
                 right -= 1
     
         return max_area
-  
+ ```
+-[**1679(Medium). Max Number of K-Sum Pairs**](https://leetcode.com/problems/max-number-of-k-sum-pairs/description/?envType=study-plan-v2&envId=leetcode-75)
+  - You are given an integer array nums and an integer k.
+  - In one operation, you can pick two numbers from the array whose sum equals k and remove them from the array.
+  - Return the maximum number of operations you can perform on the array.
+
+  **Solution (Python): **
+  ```python
+class Solution(object):
+    def maxOperations(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        freq = {}
+        operations = 0
+        
+        for num in nums:
+            complement = k - num
+            if complement in freq and freq[complement] > 0:
+                operations += 1
+                freq[complement] -= 1
+            elif num not in freq:
+                freq[num] = 1
+            else:
+                # If complement is not found and num is already in freq,
+                # increment the frequency count for num
+                freq[num] += 1
+        
+        return operations
+
+ ``` 
+
