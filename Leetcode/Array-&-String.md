@@ -4,10 +4,9 @@
   >You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string.
   > Return the merged string.
 
-  **Solution: **
+  **Solution (Python): **
 
-   ```python
-   class Solution(object):
+  class Solution(object):
     def mergeAlternately(self, word1, word2):
         """
         :type word1: str
@@ -29,13 +28,13 @@
             final_string += word1[k:]
 
         return final_string
-       ```
 
-- [Leetcode 102: Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/)
+- [1071. Greatest Common Divisor of Strings](https://leetcode.com/problems/greatest-common-divisor-of-strings/description/?envType=study-plan-v2&envId=leetcode-75)
+  > For two strings s and t, we say "t divides s" if and only if s = t + t + t + ... + t + t (i.e., t is concatenated with itself one or more times).\n
+  > Given two strings str1 and str2, return the largest string x such that x divides both str1 and str2.
+
+   **Solution (Python): **
   
-  _Time Complexity: O(N) + Space Comexity: O(N)_
-
-  ```cpp
   vector<vector<int>> levelOrder(TreeNode* root) {
         if(!root) return {};
         vector<vector<int>> ans;
@@ -55,7 +54,7 @@
         return ans;
   }
 
-  ```
+
 - [Leetcode 103: Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
   > Given the root of a binary tree, return the zigzag level order traversal of its nodes' values. (i.e., from left to right, then right to left for the next level and alternate between).
   
