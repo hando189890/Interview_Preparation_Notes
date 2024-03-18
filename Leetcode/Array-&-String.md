@@ -49,7 +49,7 @@
         gcd_length = self.gcd(len(str1), len(str2))
         
         return str1[:gcd_length]
-  
+  ```
      **Solution 2 (Python): **
     ```python
   class Solution(object):
