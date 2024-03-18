@@ -1,6 +1,6 @@
 ## Arrary and String Problem (Start)
 
-- [**Leetcode 1768: Merge Strings Alternately**](https://leetcode.com/problems/merge-strings-alternately/description/?envType=study-plan-v2&envId=leetcode-75)
+- [**Leetcode 1768 (Easy): Merge Strings Alternately**](https://leetcode.com/problems/merge-strings-alternately/description/?envType=study-plan-v2&envId=leetcode-75)
   >You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string.
   > Return the merged string.
 
@@ -30,32 +30,38 @@
         return final_string
 
 
-- [1071. Greatest Common Divisor of Strings](https://leetcode.com/problems/greatest-common-divisor-of-strings/description/?envType=study-plan-v2&envId=leetcode-75)
+- [**1071(Easy):Greatest Common Divisor of Strings**](https://leetcode.com/problems/greatest-common-divisor-of-strings/description/?envType=study-plan-v2&envId=leetcode-75)
   > For two strings s and t, we say "t divides s" if and only if s = t + t + t + ... + t + t (i.e., t is concatenated with itself one or more times).\n
   > Given two strings str1 and str2, return the largest string x such that x divides both str1 and str2.
 
-   **Solution (Python): **
+   **Solution 1 (Python): **
   ```python
-  vector<vector<int>> levelOrder(TreeNode* root) {
-        if(!root) return {};
-        vector<vector<int>> ans;
-        queue<TreeNode*> q;
-        q.push(root);
-        while(!q.empty()){
-            int n = q.size();
-            vector<int> level;
-            while(n--){
-                TreeNode *nd = q.front();q.pop();
-                level.push_back(nd->val);
-                if(nd->left) q.push(nd->left);
-                if(nd->right) q.push(nd->right);
-            }
-            ans.push_back(level);
-        }
-        return ans;
-  }
-```
-
+  class Solution(object):
+    def gcd(self, a, b):
+        while b:
+            a, b = b, a % b
+        return a
+        
+    def gcdOfStrings(self, str1, str2):
+        if str1 + str2 != str2 + str1:
+            return ""
+        
+        gcd_length = self.gcd(len(str1), len(str2))
+        
+        return str1[:gcd_length]
+  
+     **Solution 2 (Python): **
+    ```python
+  class Solution(object):
+        
+    def gcdOfStrings(self, str1, str2):
+        if str1 + str2 != str2 + str1:
+            return ""
+        if len(str1) == len(str2):
+            return str1
+        if len(str1) > len(str2):
+            return self.gcdOfStrings(str1[len(str2):], str2)
+        return self.gcdOfStrings(str1, str2[len(str1):])
 - [Leetcode 103: Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
   > Given the root of a binary tree, return the zigzag level order traversal of its nodes' values. (i.e., from left to right, then right to left for the next level and alternate between).
   
