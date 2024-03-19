@@ -357,7 +357,7 @@
         return dic.values()
   ```
      **Solution Two (Python): **
-  _Time Complexity: O(n*m) _
+  _Time Complexity: O(n*klogn) _
   ```python
   class Solution(object):
     def groupAnagrams(self, strs):
