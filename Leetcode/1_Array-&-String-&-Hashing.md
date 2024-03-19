@@ -311,3 +311,27 @@
                 return False
         return True     # Otherwise, return true...
   ```
+
+- [**1. Two Sum**](https://leetcode.com/problems/two-sum/description/)
+  - Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+  - You may assume that each input would have exactly one solution, and you may not use the same element twice.
+  - You can return the answer in any order.
+
+   **Solution (Python): **
+  _Time Complexity: O(N) + Space Comexity: O(N)_
+  ```python
+  class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        hashset = {}  # Create an empty dictionary to store indices
+        for i, num in enumerate(nums):  # Fix syntax error here
+            diff = target - num
+            if diff in hashset and hashset[diff] != i:  # Check if the complement exists and it's not the same index
+                return [hashset[diff], i]  # Return the indices
+            hashset[num] = i  # Store the index of the current number
+        return None  # Return None if no solution is found
+  ```
