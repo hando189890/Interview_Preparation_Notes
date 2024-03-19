@@ -1,4 +1,4 @@
-## Part 1: Arrary and String Problem
+## Part 1: Arrary String and Hashing Problem
 
 - [**Leetcode 1768 (Easy): Merge Strings Alternately**](https://leetcode.com/problems/merge-strings-alternately/description/?envType=study-plan-v2&envId=leetcode-75)
   - You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string.
@@ -271,3 +271,19 @@
                     ans += 1
 
         return ans
+
+- [**217(Easy). Contains Duplicate**](https://leetcode.com/problems/contains-duplicate/description/)
+  - Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
+   **Solution (Python): **
+  _Time Complexity: O(N) + Space Comexity: O(N)_
+  ```python
+  class Solution(object):
+    def containsDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        return len(nums) != len(set(nums))
+  ```
+  
