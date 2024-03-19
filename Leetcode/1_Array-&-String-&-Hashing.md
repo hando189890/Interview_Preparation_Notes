@@ -335,3 +335,48 @@
             hashset[num] = i  # Store the index of the current number
         return None  # Return None if no solution is found
   ```
+- [**49(Medium). Group Anagrams**](https://leetcode.com/problems/group-anagrams/description/)
+  - Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+  - An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+   **Solution One (Python): **
+  _Time Complexity: O(n*m) _
+  ```python
+  class Solution(object):
+    def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        dic = collections.defaultdict(list)
+        for i in strs:
+            c = [0] * 26
+            for ch in i:
+                c[ord(ch)-ord('a')] += 1
+            dic[tuple(c)].append(i)
+        return dic.values()
+  ```
+     **Solution Two (Python): **
+  _Time Complexity: O(n*m) _
+  ```python
+  class Solution(object):
+    def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        group_dict = {}
+        for word in strs:
+            cur = tuple(sorted(word))  # Convert list to tuple
+            # Stored as group_dict = {(u'a', u'b', u't'): [u'bat'], (u'a', u'e', u't'): [u'eat', u'tea', u'ate'], (u'a', u'n', u't'): [u'tan', u'nat']}
+            '''
+            cur = ''.join(sorted(word))
+            Stored as group_dict = {u'ant': [u'tan', u'nat'], u'abt': [u'bat'], u'aet': [u'eat', u'tea', u'ate']}
+            '''
+            if cur in group_dict:
+                group_dict[cur].append(word)
+            else:
+                group_dict[cur] = [word]
+        print(group_dict)
+        return list(group_dict.values())
+  ```
