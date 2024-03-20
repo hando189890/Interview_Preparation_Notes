@@ -117,7 +117,7 @@ class Solution(object):
 
  ``` 
 
--[**125. Valid Palindrome**](https://leetcode.com/problems/valid-palindrome/description/)
+-[**125(Easy). Valid Palindrome**](https://leetcode.com/problems/valid-palindrome/description/)
   - A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
   - Given a string s, return true if it is a palindrome, or false otherwise.
 
@@ -151,3 +151,90 @@ class Solution(object):
         p = "".join(re.findall("[A-Za-z0-9]+", s)).lower()
         return p == p[::-1]
  ``` 
+
+
+-[**15(Medium). 3Sum**](https://leetcode.com/problems/3sum/description/)
+  - Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+  - Notice that the solution set must not contain duplicate triplets.
+
+  **Solution (Python): **
+  ```python
+class Solution(object):
+    def threeSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        nums.sort()
+        output = set()
+        for i in range(len(nums)):
+            j = i + 1
+            k = len(nums) - 1
+            while j < k:
+                total = nums[i] + nums[j] + nums[k]
+                if total == 0:
+                    output.add((nums[i], nums[j], nums[k]))
+                    j += 1
+                    k -= 1
+                elif total < 0:
+                    j += 1
+                else:
+                    k -= 1
+        return list(output)
+ ```
+  **Solution (Python): **
+  ```python
+class Solution(object):
+    def threeSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        # Initialize lists to hold negative, positive, and zero numbers
+        negative_nums = []
+        positive_nums = []
+        zero_nums = []
+        
+        # Initialize a set to store the result
+        result = set()
+        
+        # Iterate through the input list and categorize numbers
+        for num in nums:
+            if num < 0:
+                negative_nums.append(num)
+            elif num > 0:
+                positive_nums.append(num)
+            else:
+                zero_nums.append(num)
+        
+        # Convert lists to sets for faster lookup
+        negative_set = set(negative_nums)
+        positive_set = set(positive_nums)
+        
+        # Case when zero exists in the input list
+        if zero_nums:
+            for num in positive_set:
+                reciprocal = -1 * num
+                if reciprocal in negative_set:
+                    result.add(tuple([num, 0, -num]))
+        
+        # Case when there are at least three zeros
+        if len(zero_nums) >= 3:
+            result.add((0, 0, 0))
+        
+        # Check combinations of two negative numbers and one positive number
+        for i in range(len(negative_nums)):
+            for j in range(i + 1, len(negative_nums)):
+                target = -1 * (negative_nums[i] + negative_nums[j])
+                if target in positive_set:
+                    result.add(tuple(sorted([negative_nums[i], negative_nums[j], target])))
+        
+        # Check combinations of two positive numbers and one negative number
+        for i in range(len(positive_nums)):
+            for j in range(i + 1, len(positive_nums)):
+                target = -1 * (positive_nums[i] + positive_nums[j])
+                if target in negative_set:
+                    result.add(tuple(sorted([positive_nums[i], positive_nums[j], target])))
+        
+        return result
+ ```
