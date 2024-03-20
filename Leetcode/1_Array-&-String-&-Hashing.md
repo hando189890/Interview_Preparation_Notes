@@ -472,7 +472,7 @@
         return len(finalset)
   ```
      **Solution Two (Python): **
-  ```python
+  ```
 class Solution(object):
     def findPairs(self, nums, k):
         """
@@ -495,3 +495,4 @@ class Solution(object):
                     count += 1
             return count
   ```
+
