@@ -117,3 +117,37 @@ class Solution(object):
 
  ``` 
 
+-[**125. Valid Palindrome**](https://leetcode.com/problems/valid-palindrome/description/)
+  - A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+  - Given a string s, return true if it is a palindrome, or false otherwise.
+
+  **Solution (Python): **
+  ```python
+class Solution(object):
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        cleaned = ''.join(c.lower() for c in s if c.isalnum())
+        left, right = 0, len(cleaned)-1
+
+        while left < right:
+            if cleaned[left] != cleaned[right]:
+                return False
+            left+=1
+            right-=1
+        return True
+ ```
+  **Solution (Python): **
+  ```python
+class Solution(object):
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        # p = re.sub('[^a-z0-9]', '', s.lower())
+        p = "".join(re.findall("[A-Za-z0-9]+", s)).lower()
+        return p == p[::-1]
+ ``` 
