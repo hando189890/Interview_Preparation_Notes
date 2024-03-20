@@ -191,7 +191,7 @@
   _Time Complexity: O(N) + Space Comexity: O(N)_
   ```python
   class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
+    def productExceptSelf(self, nums):
         n = len(nums)
         ans = [1] * n
         l = 1
@@ -406,27 +406,34 @@
         return top_k
   ```
 
-  - [**347(Medium). Top K Frequent Elements**](https://leetcode.com/problems/top-k-frequent-elements/description/)
-  - Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+- [**128(Medium). Longest Consecutive Sequence**](https://leetcode.com/problems/longest-consecutive-sequence/description/)
+  - Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
+  - You must write an algorithm that runs in O(n) time.
 
    **Solution One (Python): **
   ```python
   class Solution(object):
-    def topKFrequent(self, nums, k):
+    def longestConsecutive(self, nums):
         """
         :type nums: List[int]
-        :type k: int
-        :rtype: List[int]
+        :rtype: int
         """
-        counts = {}
-        for num in nums:
-            counts[num] = counts.get(num, 0) + 1
-            
-        # Sort the dictionary by values (frequencies) in descending order
-        sorted_counts = sorted(counts.items(), key=lambda x: x[1], reverse=True)
-    
-        # Get the first k elements from the sorted dictionary
-        top_k = [item[0] for item in sorted_counts[:k]]
-    
-        return top_k
+        if not nums:
+            return 0
+        num_set = set(nums)
+        max_length = 0
+        for num in num_set:
+            # Check if num is the start of a new consecutive sequence
+            if num - 1 not in num_set:
+                current_num = num
+                current_length = 1
+
+                # Count the length of the consecutive sequence
+                while current_num + 1 in num_set:
+                    current_num += 1
+                    current_length += 1
+
+            max_length = max(max_length, current_length)
+
+        return max_length
   ```
