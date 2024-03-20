@@ -472,8 +472,8 @@
         return len(finalset)
   ```
      **Solution Two (Python): **
-  ```
-class Solution(object):
+  ```python
+  class Solution(object):
     def findPairs(self, nums, k):
         """
         :type nums: List[int]
