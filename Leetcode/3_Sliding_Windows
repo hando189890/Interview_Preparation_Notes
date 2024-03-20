@@ -1,1 +1,31 @@
+## Part 3: Sliding Windows
+
+-[**121(Easy). Best Time to Buy and Sell Stock**](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)
+  - You are given an array prices where prices[i] is the price of a given stock on the ith day.
+  - You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+  - Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+  **Solution (Python): **
+  ```python
+  class Solution(object):
+    def moveZeroes(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: None Do not return anything, modify nums in-place instead.
+        """
+        
+        insert_pos = 0
+        
+        for num in nums:
+            if num != 0:
+                nums[insert_pos] = num
+                insert_pos += 1
+        
+        while insert_pos < len(nums):
+            nums[insert_pos] = 0
+            insert_pos += 1
+
+        return nums
+```
+
 
