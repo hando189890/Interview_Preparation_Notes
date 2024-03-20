@@ -405,4 +405,28 @@
     
         return top_k
   ```
-  
+
+  - [**347(Medium). Top K Frequent Elements**](https://leetcode.com/problems/top-k-frequent-elements/description/)
+  - Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+
+   **Solution One (Python): **
+  ```python
+  class Solution(object):
+    def topKFrequent(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        counts = {}
+        for num in nums:
+            counts[num] = counts.get(num, 0) + 1
+            
+        # Sort the dictionary by values (frequencies) in descending order
+        sorted_counts = sorted(counts.items(), key=lambda x: x[1], reverse=True)
+    
+        # Get the first k elements from the sorted dictionary
+        top_k = [item[0] for item in sorted_counts[:k]]
+    
+        return top_k
+  ```
