@@ -437,3 +437,61 @@
 
         return max_length
   ```
+
+- [**532(Medium). K-diff Pairs in an Array**](https://leetcode.com/problems/k-diff-pairs-in-an-array/description/)
+  - Given an array of integers nums and an integer k, return the number of unique k-diff pairs in the array.
+  - A k-diff pair is an integer pair (nums[i], nums[j]), where the following are true:
+    - 0 <= i, j < nums.length
+    - i != j
+    - |nums[i] - nums[j]| == k
+  - Notice that |val| denotes the absolute value of val.
+
+   **Solution One (Python): **
+  ```python
+  class Solution(object):
+    def findPairs(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """ 
+       
+        hashset = set(nums)
+        counter = Counter(nums)
+        finalset = set()
+
+        for n in nums:
+            if k == 0:
+                return sum(1 for num, count in counter.items() if count > 1)
+            
+            if n - k in hashset:
+                finalset.add(tuple(sorted([n, n - k])))
+            if n + k in hashset:
+                finalset.add(tuple(sorted([n, n + k])))
+
+        return len(finalset)
+  ```
+     **Solution Two (Python): **
+  ```python
+class Solution(object):
+    def findPairs(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """ 
+        if k != 0:
+            count = 0
+            nums = set(nums)
+            for i in nums:
+                if i + k in nums:
+                    count += 1
+            return count
+        else:
+            count = 0
+            nums_set = set(nums)
+            for i in nums_set:
+                if nums.count(i) > 1:
+                    count += 1
+            return count
+  ```
