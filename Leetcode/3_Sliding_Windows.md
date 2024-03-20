@@ -1,6 +1,6 @@
 ## Part 3: Sliding Windows
 
--[**121(Easy). Best Time to Buy and Sell Stock**](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)
+-[**LeetCode 121(Easy). Best Time to Buy and Sell Stock**](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)
   - You are given an array prices where prices[i] is the price of a given stock on the ith day.
   - You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
   - Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
@@ -45,6 +45,33 @@
                 max_rent = p - min_val_found
                 
         return max_rent
+```
+
+-[**LeetCode 3(Medium). Longest Substring Without Repeating Characters**](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
+  - Given a string s, find the length of the longest substring without repeating characters.
+  **Solution (Python): **
+  ```python
+  class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        if not s:
+            return 0
+        
+        covered = set()
+        max_length = 0
+        left = 0
+        
+        for right in range(len(s)):
+            while s[right] in covered:
+                covered.remove(s[left])
+                left += 1
+            covered.add(s[right])
+            max_length = max(max_length, right - left + 1)
+        
+        return max_length
 ```
 
 
