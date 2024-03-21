@@ -104,4 +104,66 @@
 
         return max_length
 ```
+-[**LeetCode (Hard). 76. Minimum Window Substring**](https://leetcode.com/problems/minimum-window-substring/description/)
+  - Given two strings s and t of lengths m and n respectively, return the minimum window 
+substring of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string "".
+  - The testcases will be generated such that the answer is unique.
+**Solution (Python): **
+  ```python
+class Solution(object):
+    def minWindow(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: str
+        """
+        if not s or not t:
+            return ""
 
+        # Dictionary to count all characters in t
+        char_freq_t = {}
+        for char in t:
+            char_freq_t[char] = char_freq_t.get(char, 0) + 1
+
+        # Number of unique characters in t that need to be present in the window
+        required_unique_chars = len(char_freq_t)
+        
+        # Initialize left and right pointers, and the number of characters that meet the frequency requirement
+        left, right = 0, 0
+        formed = 0
+
+        # Window counts for characters in the current window
+        window_counts = {}
+
+        # Answer format: (window length, left index, right index). Initialize with -1 as window length to indicate no window found yet
+        answer = [-1, 0, 0]
+
+        while right < len(s):
+            # Add the current character to the window
+            current_char = s[right]
+            window_counts[current_char] = window_counts.get(current_char, 0) + 1
+
+            # Check if the current character's frequency matches the required frequency in t
+            if current_char in char_freq_t and window_counts[current_char] == char_freq_t[current_char]:
+                formed += 1
+
+            # Try to shrink the window from the left if all required characters are present
+            while left <= right and formed == required_unique_chars:
+                current_char = s[left]
+
+                # Update answer if the current window is smaller than the previously found smallest window
+                if answer[0] == -1 or (right - left + 1) < answer[0]:
+                    answer = [right - left + 1, left, right]
+
+                # Remove the leftmost character from the window
+                window_counts[current_char] -= 1
+                if current_char in char_freq_t and window_counts[current_char] < char_freq_t[current_char]:
+                    formed -= 1
+
+                left += 1
+
+            right += 1
+
+        # Return the minimum window substring or an empty string if no such window exists
+        return "" if answer[0] == -1 else s[answer[1]: answer[2] + 1]
+```
