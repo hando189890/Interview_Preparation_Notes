@@ -1,32 +1,34 @@
 ## Part : Binary Search Problems: 
 
--[**LeetCode (Easy). 20. Valid Parentheses**](https://leetcode.com/problems/valid-parentheses/description/)
-  - Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
-  - An input string is valid if:
-    - Open brackets must be closed by the same type of brackets.
-    - Open brackets must be closed in the correct order.
-    - Every close bracket has a corresponding open bracket of the same type.
+- [**LeetCode (Medium).153. Find Minimum in Rotated Sorted Array**](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)
+  - Suppose an array of length n sorted in ascending order is rotated between 1 and n times. For example, the array nums = [0,1,2,4,5,6,7] might become:
+    - [4,5,6,7,0,1,2] if it was rotated 4 times.
+    - [0,1,2,4,5,6,7] if it was rotated 7 times.
+  - Notice that rotating an array [a[0], a[1], a[2], ..., a[n-1]] 1 time results in the array [a[n-1], a[0], a[1], a[2], ..., a[n-2]].
+  - Given the sorted rotated array nums of unique elements, return the minimum element of this array.
+  - You must write an algorithm that runs in O(log n) time.
    
   **Solution (Python): **
   ```python
   class Solution(object):
-    def isValid(self, s):
+    def findMin(self, nums):
         """
-        :type s: str
-        :rtype: bool
+        :type nums: List[int]
+        :rtype: int
         """
-        stack = [] # create an empty stack to store opening brackets
-        for c in s: # loop through each character in the string
-            if c in '([{': # if the character is an opening bracket
-                stack.append(c) # push it onto the stack
-            else: # if the character is a closing bracket
-                if not stack or \
-                    (c == ')' and stack[-1] != '(') or \
-                    (c == '}' and stack[-1] != '{') or \
-                    (c == ']' and stack[-1] != '['):
-                    return False # the string is not valid, so return false
-                stack.pop() # otherwise, pop the opening bracket from the stack
-        return not stack # if the stack is empty, all opening brackets have been matched with their corresponding closing brackets,
-                         # so the string is valid, otherwise, there are unmatched opening brackets, so return false
 
+        left, right = 0, len(nums) - 1
+        
+        # The binary search
+        while left < right:
+            mid = left + (right - left) // 2
+            
+            # If middle element is greater than the rightmost element,
+            # the smallest element is in the right half
+            if nums[mid] > nums[right]:
+                left = mid + 1
+            else:
+                # If middle element is less than or equal to the rightmost element,
+                # the smallest element is in the left half (including mid)
+                right = mid
   ```
